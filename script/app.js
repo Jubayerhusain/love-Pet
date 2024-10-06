@@ -17,12 +17,10 @@ const displayCatagoryBtn = (peddyCategoriesBTn) => {
             category,
             category_icon
         } = peddybtn;
-
         const peddyCategory = document.getElementById('peddy-category');
-
         const div = document.createElement('div');
         div.innerHTML = `
-        <button class="btn w-[200px] m-7 btn-lg " onclick = "peddyCategoriName()">
+        <button onclick="categoriesDisaplay('${category}')" class="btn w-[200px] m-7 btn-lg " >
         <img src=${category_icon} />
         <p class="text-xl font-bold">${category}  </p>
         </button>
@@ -30,6 +28,15 @@ const displayCatagoryBtn = (peddyCategoriesBTn) => {
         peddyCategory.appendChild(div)
     });
 
+}
+
+const categoriesDisaplay = (id) => {
+    // console.log(id)
+    // console.log("btn cliked");
+    fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`) 
+    .then(responce => responce.json())
+    .then(data =>displayAllPets(data.data))
+    .catch((error) => console.log(error));
 }
 // Fetch All Pets
 const allPeddys = async () => {
@@ -47,20 +54,19 @@ const allPeddys = async () => {
 const displayAllPets = (displayPets) => {
     const spinner = document.getElementById('spinner');
     spinner.classList.add('hidden')
-    // console.log(displayPets);
+    console.log(displayPets);
+    const allPeddyDisplay = document.getElementById('all-peddy-display');
+    allPeddyDisplay.innerHTML = '';
     displayPets.forEach(pets => {
         // console.log(pets)
         const {
             image,
             breed,
             pet_name,
-            category,
             date_of_birth,
             price,
             gender,
-            pet_details
         } = pets;
-        const allPeddyDisplay = document.getElementById('all-peddy-display');
         const petDiv = document.createElement('div');
         petDiv.innerHTML = `
         <div class = "border-1 p-2">
@@ -90,18 +96,5 @@ const displayAllPets = (displayPets) => {
     })
 
 }
-
-
-// peddy category name
-const peddyCategoriName = async () => {
-    // const respons = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
-    // const data = await respons.json();
-    // console.log(data);
-    // console.log('btn cliked')
-    // const allPeddyDisplay = document.getElementById('all-peddy-display');
-    // allPeddyDisplay.classList.add('hidden')
-}
-
-
 peddyCategories();
 allPeddys();
