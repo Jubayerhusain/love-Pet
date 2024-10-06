@@ -22,9 +22,9 @@ const displayCatagoryBtn = (peddyCategoriesBTn) => {
 
         const div = document.createElement('div');
         div.innerHTML = `
-        <button class="btn w-[200px] m-7 btn-lg">
+        <button class="btn w-[200px] m-7 btn-lg " onclick = "peddyCategoriName()">
         <img src=${category_icon} />
-        <p class="text-xl font-bold">${category}</p>
+        <p class="text-xl font-bold">${category}  </p>
         </button>
         `;
         peddyCategory.appendChild(div)
@@ -35,14 +35,31 @@ const displayCatagoryBtn = (peddyCategoriesBTn) => {
 const allPeddys = async () => {
     const respons = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`);
     const data = await respons.json();
-    deisplayAllPets(data.pets);
+    // displayAllPets(data.pets);
+    console.log('3 second done')
+    const spinner = document.getElementById('spinner');
+    spinner.classList.remove('hidden')
+    setTimeout(() => {
+        displayAllPets(data.pets);
+    }, 2000);
 }
 
-const deisplayAllPets = (displayPets) => {
-    console.log(displayPets);
+const displayAllPets = (displayPets) => {
+    const spinner = document.getElementById('spinner');
+    spinner.classList.add('hidden')
+    // console.log(displayPets);
     displayPets.forEach(pets => {
-        console.log(pets)
-        const {image, breed, pet_name, category, date_of_birth, price, gender, pet_details} = pets;
+        // console.log(pets)
+        const {
+            image,
+            breed,
+            pet_name,
+            category,
+            date_of_birth,
+            price,
+            gender,
+            pet_details
+        } = pets;
         const allPeddyDisplay = document.getElementById('all-peddy-display');
         const petDiv = document.createElement('div');
         petDiv.innerHTML = `
@@ -52,7 +69,7 @@ const deisplayAllPets = (displayPets) => {
                     <img
                     src=${image}
                     alt="pet image"
-                    class="rounded-xl h-[240px]" />
+                    class="rounded-xl h-[220px]" />
                 </figure>
                 <div class="card-body text-start">
                     <h1 class = "font-bold text-2xl text-gray-950">${pet_name?pet_name:"Pet Name not found!"}</h1>
@@ -73,5 +90,18 @@ const deisplayAllPets = (displayPets) => {
     })
 
 }
+
+
+// peddy category name
+const peddyCategoriName = async () => {
+    // const respons = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
+    // const data = await respons.json();
+    // console.log(data);
+    // console.log('btn cliked')
+    // const allPeddyDisplay = document.getElementById('all-peddy-display');
+    // allPeddyDisplay.classList.add('hidden')
+}
+
+
 peddyCategories();
 allPeddys();

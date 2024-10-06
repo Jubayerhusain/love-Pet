@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Peddy</title>
+    <link rel="stylesheet" href="./style/style.css" />
     <!-- ALL CDN  -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
@@ -117,35 +118,54 @@
       <div>
         <div
           id="peddy-category"
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-center
-          w-12/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 mx-auto"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-center w-12/12 md:w-10/12 lg:w-8/12 xl:w-8/12 2xl:w-7/12 mx-auto"
         ></div>
       </div>
       <!-- peddy categores section close  -->
 
       <!-- all peddy container start -->
-      <div class="flex flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row text-center  lg:justify-between  xl:justify-between 2xl:justify-between 2xl:w-11/12 xl:w-11/12 lg:w-11/12 w-12/12    mx-auto">
+      <div
+        class="flex flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row text-center lg:justify-between xl:justify-between 2xl:justify-between 2xl:w-11/12 xl:w-11/12 lg:w-11/12 w-12/12 mx-auto"
+      >
         <h1 class="font-bold text-3xl text-gray-950 py-2">Best Deal For you</h1>
         <div class="text-center">
-        <button class="btn btn-wide bg-teal-600 text-white text-lg font-semibold">Short By Price</button>
+          <button
+            class="btn btn-wide bg-teal-600 text-white text-lg font-semibold"
+          >
+            Short By Price
+          </button>
         </div>
-       </div>
-      <div class="flex flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row justify-center lg:justify-between  xl:justify-between  2xl:justify-between w-11/12 mx-auto my-5"> 
+      </div>
+      <div
+        class="flex flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row justify-center lg:justify-between xl:justify-between 2xl:justify-between w-11/12 mx-auto my-5"
+      >
         <!-- peddy-section left side start  -->
         <div>
-          
+          <!-- spinner-container start -->
+          <div>
+            <div id="spinner" class="spinner-container">
+              <div class="circle circle1"></div>
+              <div class="circle circle2"></div>
+              <div class="circle circle3"></div>
+              <div class="circle circle4"></div>
+          </div>
+          </div>
+          <!-- spinner-container start -->
           <!-- all peddy  -->
           <div>
-            <div id="all-peddy-display" class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2  md:grid-cols-1 grid-cols-1 mt-10"></div>
+            <div
+              id="all-peddy-display"
+              class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 mt-10"
+            ></div>
           </div>
         </div>
         <!-- peddy-section close  -->
         <!-- peddy sorting right side by price start  -->
         <div>
           <!-- like peddy  -->
-          <div class="border-2 rounded-xl h-lvh w-[300px] lg:w-[330px] xl:w-[350px] 2xl:w-[450px] mx-auto mt-12">
-
-          </div>
+          <div
+            class="border-2 rounded-xl h-lvh w-[300px] lg:w-[330px] xl:w-[350px] 2xl:w-[450px] mx-auto mt-12"
+          ></div>
         </div>
         <!-- peddy sorting by price close  -->
       </div>
