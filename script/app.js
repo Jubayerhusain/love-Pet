@@ -1,6 +1,5 @@
 console.log("hey jubayer your api file connect done")
 
-
 // Fetch All Pet Categories
 const peddyCategories = async () => {
     const response = await fetch(`https://openapi.programming-hero.com/api/peddy/categories`)
@@ -20,7 +19,7 @@ const displayCatagoryBtn = (peddyCategoriesBTn) => {
         const peddyCategory = document.getElementById('peddy-category');
         const div = document.createElement('div');
         div.innerHTML = `
-        <button onclick="categoriesDisaplay('${category}')" class="btn w-[200px] m-7 btn-lg " >
+        <button onclick="categoriesDisaplay(this,'${category}')" class="btn  bg-white w-[200px] m-7 btn-lg " >
         <img src=${category_icon} />
         <p class="text-xl font-bold">${category}  </p>
         </button>
@@ -29,10 +28,18 @@ const displayCatagoryBtn = (peddyCategoriesBTn) => {
     });
 
 }
+let previousBtn = null;
+const categoriesDisaplay = async (buttonElement, id) => {
+    if (previousBtn) {
+        previousBtn.style.backgroundColor = "white";
+        previousBtn.style.border = "none";
+        previousBtn.style.borderRadius = "10px";
+    }
+    buttonElement.style.backgroundColor = "rgba(1, 97, 97, 0.1)";
+    buttonElement.style.borderRadius = "35px";
+    buttonElement.style.border = "3px solid teal";
+    previousBtn = buttonElement;
 
-const categoriesDisaplay = async (id) => {
-    // console.log(id)
-    // console.log("btn cliked");
     const spinner = document.getElementById('spinner');
     spinner.classList.remove('hidden')
     const peddyCategory = document.getElementById('all-peddy-display');
@@ -62,10 +69,17 @@ const displayAllPets = (displayPets) => {
     const spinner = document.getElementById('spinner');
     spinner.classList.add('hidden')
     console.log(displayPets);
+    if (displayPets.length === 0) {
+        const noFoundData = document.getElementById('no-data-found');
+        noFoundData.classList.remove('hidden')
+    } else {
+        const noFoundData = document.getElementById('no-data-found');
+        noFoundData.classList.add('hidden')
+    }
     const allPeddyDisplay = document.getElementById('all-peddy-display');
     allPeddyDisplay.innerHTML = '';
     displayPets.forEach(pets => {
-        // console.log(pets)
+        console.log(pets)
         const {
             image,
             breed,

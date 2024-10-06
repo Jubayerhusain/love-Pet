@@ -147,7 +147,21 @@
             <div
               id="all-peddy-display"
               class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 mt-10"
-            ></div>
+            >
+          </div>
+          <div id="no-data-found" class="hidden mb-10">
+            <img class="w-[250px] mx-auto" src="./images/error.webp" alt="" />
+            <h1 class="text-center font-bold text-3xl text-gray-900">No Information Available</h1>
+            <p class="text-center text-xs text-gray-600 w-9/12 mx-auto">
+              information about the specific bird being searched for or
+              requested. This message typically appears when the system cannot
+              retrieve details about a particular bird species, such as its
+              characteristics, habitat, diet, or other relevant attributes. It
+              serves as a notice to the user, suggesting that the database or
+              source does not currently have any records or descriptions for the
+              bird in question, and further research may be needed.
+            </p>
+          </div>
           </div>
         </div>
         <!-- spinner-container start -->
@@ -164,18 +178,22 @@
         <!-- peddy sorting right side by price start  -->
         <div>
           <!-- like peddy  -->
-           <div class="border-2 rounded-xl p-3 w-[300px] lg:w-[330px] xl:w-[350px] 2xl:w-[450px] mx-auto mt-12">
-            <h2 class="text-xl font-bold text-gray-950 text-center col-span-2 relative py-5 hover:text-teal-600 transition-shadow">Add Your Lovely Pets</h2>
-            <div id="reactTo-add-peddy"
-            class="grid grid-cols-2 gap-5"
+          <div
+            class="border-2 rounded-xl p-3 w-[300px] lg:w-[330px] xl:w-[350px] 2xl:w-[450px] mx-auto mt-12"
           >
-        </div>
-           </div>
-          
+            <h2
+              class="text-xl font-bold text-gray-950 text-center col-span-2 relative py-5 hover:text-teal-600 transition-shadow"
+            >
+              Add Your Lovely Pets
+            </h2>
+            <div id="reactTo-add-peddy" class="grid grid-cols-2 gap-5"></div>
+          </div>
         </div>
         <!-- peddy sorting by price close  -->
       </div>
       <!-- all peddy container close -->
+
+
     </main>
     <!-- main section close  -->
     <!-- footer-section start  -->
