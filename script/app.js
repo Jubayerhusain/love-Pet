@@ -30,13 +30,18 @@ const displayCatagoryBtn = (peddyCategoriesBTn) => {
 
 }
 
-const categoriesDisaplay = (id) => {
+const categoriesDisaplay =async (id) => {
     // console.log(id)
     // console.log("btn cliked");
-    fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`) 
-    .then(responce => responce.json())
-    .then(data =>displayAllPets(data.data))
-    .catch((error) => console.log(error));
+    const spinner = document.getElementById('spinner');
+    spinner.classList.remove('hidden')
+    const peddyCategory =document.getElementById('all-peddy-display');
+    peddyCategory.classList.add('hidden')
+    const responce = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`);
+    const data = await responce.json();
+    setTimeout(() => {
+        displayAllPets(data.data);
+    }, 1500);
 }
 // Fetch All Pets
 const allPeddys = async () => {
@@ -48,10 +53,12 @@ const allPeddys = async () => {
     spinner.classList.remove('hidden')
     setTimeout(() => {
         displayAllPets(data.pets);
-    }, 2000);
+    }, 1500);
 }
 
 const displayAllPets = (displayPets) => {
+    const peddyCategory =document.getElementById('all-peddy-display');
+    peddyCategory.classList.remove('hidden')
     const spinner = document.getElementById('spinner');
     spinner.classList.add('hidden')
     console.log(displayPets);
