@@ -30,12 +30,12 @@ const displayCatagoryBtn = (peddyCategoriesBTn) => {
 
 }
 
-const categoriesDisaplay =async (id) => {
+const categoriesDisaplay = async (id) => {
     // console.log(id)
     // console.log("btn cliked");
     const spinner = document.getElementById('spinner');
     spinner.classList.remove('hidden')
-    const peddyCategory =document.getElementById('all-peddy-display');
+    const peddyCategory = document.getElementById('all-peddy-display');
     peddyCategory.classList.add('hidden')
     const responce = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`);
     const data = await responce.json();
@@ -53,11 +53,11 @@ const allPeddys = async () => {
     spinner.classList.remove('hidden')
     setTimeout(() => {
         displayAllPets(data.pets);
-    }, 1500);
+    }, 1000);
 }
 
 const displayAllPets = (displayPets) => {
-    const peddyCategory =document.getElementById('all-peddy-display');
+    const peddyCategory = document.getElementById('all-peddy-display');
     peddyCategory.classList.remove('hidden')
     const spinner = document.getElementById('spinner');
     spinner.classList.add('hidden')
@@ -92,7 +92,7 @@ const displayAllPets = (displayPets) => {
                     <p class = "font-normal text-md ">Price: ${price?price:"Not Available"}$</p>            
                 </div>
                 <div class = "border-t-2 border-teal-200 flex justify-between w-11/12 mx-auto h-20 pt-3">
-                    <button type="submit" class="btn bg-transparent"><img class = "h-10 w-10" src = "https://img.icons8.com/?size=100&id=1AllZHY53hW3&format=png&color=000000" /></button>
+                    <button type="submit" class="btn bg-transparent" onclick = "reactPets('${image}')"><img class = "h-10 w-10" src = "https://img.icons8.com/?size=100&id=1AllZHY53hW3&format=png&color=000000" /></button>
                     <button type="submit" class="btn text-teal-600 text-lg font-semibold bg-transparent">Abopt</button>
                     <button type="submit" class="btn text-teal-600 text-lg font-semibold bg-transparent">Details</button>
                 </div>
@@ -101,6 +101,20 @@ const displayAllPets = (displayPets) => {
         `;
         allPeddyDisplay.append(petDiv);
     })
+
+}
+// after click react btn then peddy picture will be show future section 
+const reactPets = (image) => {
+    console.log('react btn is clicked', image)
+    const reactToAddPeddy = document.getElementById('reactTo-add-peddy');
+    const addPetDiv = document.createElement('div');
+    addPetDiv.innerHTML = `
+    <div>
+        <img class = " rounded-lg"  src=${image} />
+    </div>
+    `;
+    // reactToAddPeddy.appendChild(addPetDiv);
+    reactToAddPeddy.insertBefore(addPetDiv, reactToAddPeddy.firstChild);
 
 }
 peddyCategories();
