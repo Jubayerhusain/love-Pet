@@ -47,7 +47,7 @@ const deisplayAllPets = (displayPets) => {
         const petDiv = document.createElement('div');
         petDiv.innerHTML = `
         <div class = "border-1 p-2">
-            <div class="card bg-base-100 w-96 border-2">
+            <div class="card bg-base-100 w-92 border-2">
                 <figure class="px-5 pt-5">
                     <img
                     src=${image}
