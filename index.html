@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" class="scroll-smooth focus:scroll-auto">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +17,7 @@
     <!-- header section start  -->
     <header>
       <!-- navber section start  -->
-      <div
+      <div id="nav"
         class="navbar bg-base-100 w-12/12 lg:w-11/12 mx-auto items-center top-0 sticky shadow-sm"
       >
         <div class="navbar-start">
@@ -44,7 +44,7 @@
             >
               <li><a>Home</a></li>
               <li><a>Shop</a></li>
-              <li><a>Contact</a></li>
+              <li><a href="#footer">Contact</a></li>
             </ul>
           </div>
           <div class="flex items-center">
@@ -56,7 +56,7 @@
           <ul class="font-semibold text-md menu menu-horizontal px-1">
             <li><a>Home</a></li>
             <li><a>Shop</a></li>
-            <li><a>Contact</a></li>
+            <li><a href="#footer">Contact</a></li>
           </ul>
         </div>
         <div class="navbar-end">
@@ -85,9 +85,9 @@
           </p>
         </div>
         <div class="text-center">
-          <button class="btn bg-teal-600 text-white font-semibold text-xl">
+          <a class="btn bg-teal-600 text-white font-semibold text-xl" href="#scroll">
             View More
-          </button>
+          </a>
         </div>
         <div class="flex justify-center my-10">
           <img src="./images/pet.webp" alt="" />
@@ -97,7 +97,7 @@
     </header>
     <!-- header section close  -->
     <!-- main section start  -->
-    <main>
+    <main id="scroll">
       <!-- top title section  -->
       <div class="w-11/12 md:w-8/12 lg:w-7/12 xl:w-7/12 2xl:w-7/12 mx-auto">
         <h1 class="text-5xl font-bold text-gray-950 text-center mt-10">
@@ -182,7 +182,7 @@
         <div>
           <!-- like peddy  -->
           <div
-            class="border-2 rounded-xl p-3 w-[300px] lg:w-[330px] xl:w-[350px] 2xl:w-[450px] mx-auto mt-12"
+            class="border-2 rounded-xl p-3 h-lvh w-[300px] lg:w-[330px] xl:w-[350px] 2xl:w-[450px] mx-auto mt-12"
           >
             <h2
               class="text-xl font-bold text-gray-950 text-center col-span-2 relative py-5 hover:text-teal-600 transition-shadow"
@@ -208,7 +208,7 @@
     </main>
     <!-- main section close  -->
     <!-- footer-section start  -->
-    <footer>
+    <footer id="footer">
       <footer
         class="footer justify-around bg-neutral text-neutral-content p-10 lg:p-20"
       >
@@ -253,7 +253,7 @@
           <h6 class="footer-title text-xl">Useful Links</h6>
           <a class="link link-hover text-lg">About us</a>
           <a class="link link-hover text-lg">Contact</a>
-          <a class="link link-hover text-lg">Home</a>
+          <a class="link link-hover text-lg" href="#nav">Home</a>
           <a class="link link-hover text-lg">Animals</a>
           <a class="link link-hover text-lg">Foundation</a>
         </nav>

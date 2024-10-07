@@ -113,7 +113,7 @@ const displayAllPets = (displayPets) => {
                 <div class="card-body text-start">
                     <h1 class = "font-bold text-2xl text-gray-950">${pet_name?pet_name:"Pet Name not found!"}</h1>
                     <p class = "font-normal text-md flex items-center"><img class = "w-5 h-5" src = "./images/breed.png" /> Breed: ${breed?breed:"Pet breed Not found!"}</p>            
-                    <p class = "font-normal text-md flex items-center"><img class = "w-5 h-5 mr-1" src = "./images/birth.png"/> Birth: ${date_of_birth?date_of_birth:"Pet date Of birth not found!"}</p>            
+                    <p class = "font-normal text-md flex items-center"><img class = "w-5 h-5 mr-1" src = "./images/birth.png"/> Birth: ${date_of_birth?date_of_birth:"date Of birth not found!"}</p>            
                     <p class = "font-normal text-md flex items-center"><img class = "w-5 h-5" src = "./images/venus-symbol.png"/> Gender: ${gender?gender:"Pet gender Not found!"}</p>            
                     <p class = "font-normal text-md flex items-center ml-1">$ Price: ${price?price:"Not Available"}$</p>            
                 </div>
