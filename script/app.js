@@ -55,7 +55,7 @@ const allPeddys = async () => {
     const respons = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`);
     const data = await respons.json();
     // displayAllPets(data.pets);
-    console.log('3 second done')
+    // console.log('3 second done')
     const spinner = document.getElementById('spinner');
     spinner.classList.remove('hidden')
     setTimeout(() => {
@@ -79,7 +79,7 @@ const displayAllPets = (displayPets) => {
     peddyCategory.classList.remove('hidden')
     const spinner = document.getElementById('spinner');
     spinner.classList.add('hidden')
-    console.log(displayPets);
+    // console.log(displayPets);
     if (displayPets.length === 0) {
         const noFoundData = document.getElementById('no-data-found');
         noFoundData.classList.remove('hidden')
@@ -90,11 +90,12 @@ const displayAllPets = (displayPets) => {
     const allPeddyDisplay = document.getElementById('all-peddy-display');
     allPeddyDisplay.innerHTML = '';
     displayPets.forEach(pets => {
-        console.log(pets)
+        // console.log(pets)
         const {
             image,
             breed,
             pet_name,
+            petId,
             date_of_birth,
             price,
             gender,
@@ -111,15 +112,15 @@ const displayAllPets = (displayPets) => {
                 </figure>
                 <div class="card-body text-start">
                     <h1 class = "font-bold text-2xl text-gray-950">${pet_name?pet_name:"Pet Name not found!"}</h1>
-                    <p class = "font-normal text-md ">Breed: ${breed?breed:"Pet breed Not found!"}</p>            
-                    <p class = "font-normal text-md ">Birth: ${date_of_birth?date_of_birth:"Pet date Of birth not found!"}</p>            
-                    <p class = "font-normal text-md ">Gender: ${gender?gender:"Pet gender Not found!"}</p>            
-                    <p class = "font-normal text-md ">Price: ${price?price:"Not Available"}$</p>            
+                    <p class = "font-normal text-md flex items-center"><img class = "w-5 h-5" src = "./images/breed.png" /> Breed: ${breed?breed:"Pet breed Not found!"}</p>            
+                    <p class = "font-normal text-md flex items-center"><img class = "w-5 h-5 mr-1" src = "./images/birth.png"/> Birth: ${date_of_birth?date_of_birth:"Pet date Of birth not found!"}</p>            
+                    <p class = "font-normal text-md flex items-center"><img class = "w-5 h-5" src = "./images/venus-symbol.png"/> Gender: ${gender?gender:"Pet gender Not found!"}</p>            
+                    <p class = "font-normal text-md flex items-center ml-1">$ Price: ${price?price:"Not Available"}$</p>            
                 </div>
                 <div class = "border-t-2 border-teal-200 flex justify-between w-11/12 mx-auto h-20 pt-3">
-                    <button type="submit" class="btn bg-transparent" onclick = "reactPets('${image}')"><img class = "h-10 w-10" src = "https://img.icons8.com/?size=100&id=1AllZHY53hW3&format=png&color=000000" /></button>
-                    <button type="submit" class="btn text-teal-600 text-lg font-semibold bg-transparent">Abopt</button>
-                    <button type="submit" class="btn text-teal-600 text-lg font-semibold bg-transparent">Details</button>
+                    <button type="submit" class="btn bg-transparent hover:bg-green-200" onclick = "reactPets('${image}')"><img class = "h-10 w-10" src = "https://img.icons8.com/?size=100&id=1AllZHY53hW3&format=png&color=000000" /></button>
+                    <button type="submit" class="btn text-teal-600 text-lg font-semibold bg-transparent hover:bg-teal-600 hover:text-white">Abopt</button>
+                    <button type="submit" class="btn text-teal-600 text-lg font-semibold bg-transparent hover:bg-teal-600 hover:text-white"onclick = "petSDetails('${petId}')" >Details</button>
                 </div>
             </div>
         </div>
@@ -128,9 +129,64 @@ const displayAllPets = (displayPets) => {
     })
 
 }
+
+// on click modal create for details btn..
+const petSDetails = async (id) => {
+    console.log('pets detail btn click done')
+    const responce = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`);
+    const data = await responce.json();
+    petSDetailsDisplay(data.petData);
+    my_modal_5.showModal();
+}
+// display pet detail with modal..
+const petSDetailsDisplay = (petDetails) => {
+    console.log(petDetails)
+    const {
+        image,
+        breed,
+        pet_name,
+        date_of_birth,
+        price,
+        gender,
+        pet_details,
+        vaccinated_status
+    } = petDetails
+    const peddyDetails = document.getElementById('peddy-details');
+    peddyDetails.innerHTML = `
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+        <div>
+            <img class = "w-full h-[250px] rounded-xl shadow-sm" src= ${image} />
+        </div>
+        <h1 class = "text-3xl font-bold my-2 text-gray-900">${pet_name}</h1>
+        <div class = "flex justify-between text-lg font-semibold text-gray-700">
+            <div>
+                <p class = "flex items-center"><img class = "w-5 h-5" src = "./images/breed.png"/>Bred: ${breed}</p>
+                <p class = "flex items-center"><img class = "w-5 h-5" src = "./images/venus-symbol.png"/>Gender: ${gender}</p>
+                <p class = "flex items-center"><img class = "w-5 h-5" src = "./images/venus-symbol.png"/>Vaccinated status: ${vaccinated_status}</p>
+
+            </div>
+            <div>
+                <p/>$ Price: ${price}</p>
+                <p class = "flex items-center"><img class = "w-5 h-5 mr-1" src = "./images/birth.png"/>Date Of Birth: ${date_of_birth}</p>
+            </div>
+        </div>
+        <div>
+            <p class = "text-2xl text-gray-900 font-bold my-3" >Details Information...</p>
+            <p class = " text-md font-semibold text-gray-700 italic">${pet_details}</p>
+        </div>
+        <div class="modal-action">
+            <form method="dialog">
+                <button class="btn bg-teal-600 text-white text-sm">Close</button>
+            </form>
+        </div>
+    </div>
+    </dialog>
+    `;
+}
 // after click react btn then peddy picture will be show future section 
 const reactPets = (image) => {
-    console.log('react btn is clicked', image)
+    // console.log('react btn is clicked', image)
     const reactToAddPeddy = document.getElementById('reactTo-add-peddy');
     const addPetDiv = document.createElement('div');
     addPetDiv.innerHTML = `
