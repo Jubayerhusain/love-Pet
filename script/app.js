@@ -188,7 +188,7 @@ const petSDetailsDisplay = (petDetails) => {
             <img class = "w-full h-[270px] rounded-xl shadow-sm" src= ${image} />
         </div>
         <h1 class = "text-3xl font-bold my-2 text-gray-900">${pet_name}</h1>
-        <div class = "flex justify-between text-lg font-semibold text-gray-700">
+        <div class = "flex justify-between text-md font-semibold text-gray-700">
             <div>
                 <p class = "flex items-center"><img class = "w-5 h-5" src = "./images/breed.png"/>Bred: ${breed}</p>
                 <p class = "flex items-center"><img class = "w-5 h-5" src = "./images/venus-symbol.png"/>Gender: ${gender}</p>
