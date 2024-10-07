@@ -129,7 +129,9 @@
       >
         <h1 class="font-bold text-3xl text-gray-950 py-2">Best Deal For you</h1>
         <div class="text-center">
-          <button onclick="sortpets()" id="sort-by-price"
+          <button
+            onclick="sortpets()"
+            id="sort-by-price"
             class="btn btn-wide bg-teal-600 text-white text-lg font-semibold"
           >
             Short By Price
@@ -147,21 +149,22 @@
             <div
               id="all-peddy-display"
               class="grid 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 mt-10"
-            >
-          </div>
-          <div id="no-data-found" class="hidden mb-10">
-            <img class="w-[250px] mx-auto" src="./images/error.webp" alt="" />
-            <h1 class="text-center font-bold text-3xl text-gray-900">No Information Available</h1>
-            <p class="text-center text-xs text-gray-600 w-9/12 mx-auto">
-              information about the specific bird being searched for or
-              requested. This message typically appears when the system cannot
-              retrieve details about a particular bird species, such as its
-              characteristics, habitat, diet, or other relevant attributes. It
-              serves as a notice to the user, suggesting that the database or
-              source does not currently have any records or descriptions for the
-              bird in question, and further research may be needed.
-            </p>
-          </div>
+            ></div>
+            <div id="no-data-found" class="hidden mb-10">
+              <img class="w-[250px] mx-auto" src="./images/error.webp" alt="" />
+              <h1 class="text-center font-bold text-3xl text-gray-900">
+                No Information Available
+              </h1>
+              <p class="text-center text-xs text-gray-600 w-9/12 mx-auto">
+                information about the specific bird being searched for or
+                requested. This message typically appears when the system cannot
+                retrieve details about a particular bird species, such as its
+                characteristics, habitat, diet, or other relevant attributes. It
+                serves as a notice to the user, suggesting that the database or
+                source does not currently have any records or descriptions for
+                the bird in question, and further research may be needed.
+              </p>
+            </div>
           </div>
         </div>
         <!-- spinner-container start -->
@@ -190,13 +193,18 @@
           </div>
         </div>
         <!-- peddy sorting by price close  -->
-      </div>div>
+      </div>
       <!-- all peddy container close -->
-       <!-- pet details modal start -->
-       <div>
+      <!-- pet details modal start -->
+      <div>
         <div id="peddy-details" class=""></div>
-       </div>
-       <!-- pet details modal clsoe -->
+      </div>
+      <!-- pet details modal clsoe -->
+      <!-- modal for adopt btn start -->
+      <div>
+        <div id="adopt-modal" class=""></div>
+      </div>
+      <!-- modal for adopt btn close -->
     </main>
     <!-- main section close  -->
     <!-- footer-section start  -->

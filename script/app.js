@@ -119,7 +119,7 @@ const displayAllPets = (displayPets) => {
                 </div>
                 <div class = "border-t-2 border-teal-200 flex justify-between w-11/12 mx-auto h-20 pt-3">
                     <button type="submit" class="btn bg-transparent hover:bg-green-200" onclick = "reactPets('${image}')"><img class = "h-10 w-10" src = "https://img.icons8.com/?size=100&id=1AllZHY53hW3&format=png&color=000000" /></button>
-                    <button type="submit" class="btn text-teal-600 text-lg font-semibold bg-transparent hover:bg-teal-600 hover:text-white">Abopt</button>
+                    <button type="submit" class="btn text-teal-600 text-lg font-semibold bg-transparent hover:bg-teal-600 hover:text-white" onclick = "adoptModal()">Abopt</button>
                     <button type="submit" class="btn text-teal-600 text-lg font-semibold bg-transparent hover:bg-teal-600 hover:text-white"onclick = "petSDetails('${petId}')" >Details</button>
                 </div>
             </div>
@@ -129,7 +129,36 @@ const displayAllPets = (displayPets) => {
     })
 
 }
+// calmDown modal for Adopt btn..
+const adoptModal = () =>{
+    console.log('adopt btn is clicked')
+    adoptModalDisplay();
+    // my_modal_6.showModal();
+    my_modal_6.showModal();
 
+    // Automatic close after 3 seconds
+    let countdown = 1;
+    const countdownInterval = setInterval(() => {
+        console.log(countdown);  // Count display in console
+        if (countdown === 1) {
+            my_modal_6.close();  // Modal close after 3 seconds
+            clearInterval(countdownInterval);  // Stop the countdown
+        }
+        countdown -= 1;
+    }, 500);
+}
+const adoptModalDisplay = () =>{
+    const adoptModal = document.getElementById('adopt-modal');
+    adoptModal.innerHTML= `
+    <dialog id="my_modal_6" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+        <h3 class="text-6xl font-bold text-center text-teal-500" >Congrats!</h3>
+        <p class="py-4 text-md text-center text-gray-700 font-semibold">Successful Adopt Pets</p>
+    </div>
+    </dialog>
+    `;
+    
+}
 // on click modal create for details btn..
 const petSDetails = async (id) => {
     console.log('pets detail btn click done')
@@ -156,7 +185,7 @@ const petSDetailsDisplay = (petDetails) => {
     <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
     <div class="modal-box">
         <div>
-            <img class = "w-full h-[250px] rounded-xl shadow-sm" src= ${image} />
+            <img class = "w-full h-[270px] rounded-xl shadow-sm" src= ${image} />
         </div>
         <h1 class = "text-3xl font-bold my-2 text-gray-900">${pet_name}</h1>
         <div class = "flex justify-between text-lg font-semibold text-gray-700">
@@ -167,6 +196,7 @@ const petSDetailsDisplay = (petDetails) => {
 
             </div>
             <div>
+
                 <p/>$ Price: ${price}</p>
                 <p class = "flex items-center"><img class = "w-5 h-5 mr-1" src = "./images/birth.png"/>Date Of Birth: ${date_of_birth}</p>
             </div>
