@@ -47,7 +47,7 @@ const categoriesDisaplay = async (buttonElement, id) => {
     const responce = await fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`);
     const data = await responce.json();
     setTimeout(() => {
-        displayAllPets(data.data);
+        displayAllPets(data.data.sort((firstPed, secondPet) => secondPet.price - firstPed.price));
     }, 1500);
 }
 // Fetch All Pets
@@ -62,7 +62,18 @@ const allPeddys = async () => {
         displayAllPets(data.pets);
     }, 1000);
 }
-
+const sortpets = async () => {
+    console.log('sort btn is clicked')
+    const respons = await fetch(`https://openapi.programming-hero.com/api/peddy/pets`);
+    const data = await respons.json();
+    const spinner = document.getElementById('spinner');
+    spinner.classList.remove('hidden')
+    const peddyCategory = document.getElementById('all-peddy-display');
+    peddyCategory.classList.add('hidden')
+    setTimeout(() => {
+        displayAllPets(data.pets.sort((firstPed, secondPet) => secondPet.price - firstPed.price));
+    }, 1000);
+}
 const displayAllPets = (displayPets) => {
     const peddyCategory = document.getElementById('all-peddy-display');
     peddyCategory.classList.remove('hidden')
