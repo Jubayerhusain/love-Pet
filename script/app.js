@@ -1,4 +1,4 @@
-console.log("hey jubayer your api file connect done")
+// console.log("hey jubayer your api file connect done")
 
 // Fetch All Pet Categories
 const peddyCategories = async () => {
@@ -130,35 +130,41 @@ const displayAllPets = (displayPets) => {
 
 }
 // calmDown modal for Adopt btn..
-const adoptModal = () =>{
-    console.log('adopt btn is clicked')
+const adoptModal = () => {
+    console.log('adopt btn is clicked');
     adoptModalDisplay();
-    // my_modal_6.showModal();
-    my_modal_6.showModal();
+    const myModal = document.getElementById('my_modal_6'); 
+    myModal.showModal();
 
-    // Automatic close after 3 seconds
-    let countdown = 1;
+    
+    let countdown = 3;  
+    const countdownDisplay = document.getElementById('countdown-display');  
+
     const countdownInterval = setInterval(() => {
-        console.log(countdown);  // Count display in console
-        if (countdown === 1) {
-            my_modal_6.close();  // Modal close after 3 seconds
-            clearInterval(countdownInterval);  // Stop the countdown
+        countdownDisplay.textContent = `${countdown}`;  
+        console.log(countdown); 
+        if (countdown === 0) { 
+            myModal.close(); 
+            clearInterval(countdownInterval);  
         }
-        countdown -= 1;
-    }, 500);
+        countdown--;  
+    }, 500); 
 }
-const adoptModalDisplay = () =>{
+
+const adoptModalDisplay = () => {
     const adoptModal = document.getElementById('adopt-modal');
-    adoptModal.innerHTML= `
+    adoptModal.innerHTML = `
     <dialog id="my_modal_6" class="modal modal-bottom sm:modal-middle">
-    <div class="modal-box">
-        <h3 class="text-6xl font-bold text-center text-teal-500" >Congrats!</h3>
+      <div class="modal-box">
+        <h3 class="text-6xl font-bold text-center text-teal-500">Congrats!</h3>
         <p class="py-4 text-md text-center text-gray-700 font-semibold">Successful Adopt Pets</p>
-    </div>
+        <p id="countdown-display" class="text-5xl text-center text-teal-600 font-bold">3</p>
+      </div>
     </dialog>
     `;
-    
 }
+
+
 // on click modal create for details btn..
 const petSDetails = async (id) => {
     console.log('pets detail btn click done')
