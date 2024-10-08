@@ -156,6 +156,9 @@ const adoptModalDisplay = () => {
     adoptModal.innerHTML = `
     <dialog id="my_modal_6" class="modal modal-bottom sm:modal-middle">
       <div class="modal-box">
+        <div class = "flex justify-center">
+            <img src = "./images/congrate.png" />
+        </div>
         <h3 class="text-6xl font-bold text-center text-teal-500">Congrats!</h3>
         <p class="py-4 text-md text-center text-gray-700 font-semibold">Successful Adopt Pets</p>
         <p id="countdown-display" class="text-5xl text-center text-teal-600 font-bold">3</p>
